@@ -62,7 +62,7 @@ permalink: /blogs/
                 {% elsif field == "AI (Artificial Intelligence)" %}
                   {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
                 {% elsif field == "Robotics" %}
-                  {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
+                  {% assign sections = "Theory,Hands dirty with Robotics" | split: "," %}
                 {% elsif field == "Productivity with AI - (AI as a Assistant)" %}
                   {% assign sections = "Our Leanings from experience,For Kids" | split: "," %}
                 {% endif %}
@@ -105,7 +105,7 @@ permalink: /blogs/
                 {% elsif field == "AI (Artificial Intelligence)" %}
                   {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
                 {% elsif field == "Robotics" %}
-                  {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
+                  {% assign sections = "Theory,Hands dirty with Robotics" | split: "," %}
                 {% elsif field == "Productivity with AI - (AI as a Assistant)" %}
                   {% assign sections = "Our Leanings from experience,For Kids" | split: "," %}
                 {% endif %}
