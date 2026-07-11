@@ -2,8 +2,8 @@
 title: "The Digital Canvas"
 tagline: "Insights on Technology, Design & Engineering"
 description: "A premium, responsive Jekyll blog site with beautiful typography, glassmorphism, and a dedicated post structure."
-url: "" # the base hostname & protocol for your site, e.g. http://username.github.io
-baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://devbots2.github.io" # the base hostname & protocol for your site, e.g. http://username.github.io
+baseurl: "/GitHub-Page---Bloging-site---Jekill" # the subpath of your site, e.g. /blog
 
 # Author Details
 author:
