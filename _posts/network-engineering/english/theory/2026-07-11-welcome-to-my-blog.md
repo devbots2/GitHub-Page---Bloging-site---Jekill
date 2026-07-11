@@ -4,14 +4,11 @@ title: "Welcome to DevBotS2"
 date: 2026-07-11 09:30:00 +0530
 categories: [general, blogging]
 tags: [jekyll, writing, introduction]
-field: "Network Engineering"
-language: "English"
-section: "Theory"
 description: "An introductory post Welcoming you to DevBotS2, our new tech sharing platform."
 image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80"
 ---
 
-Hello and welcome to my new blog, **The Digital Canvas**! This is the first post of what will be a journey sharing knowledge, thoughts, and technical tutorials.
+Hello and welcome to our new blog, **DevBotS2**! This is the first post of what will be a journey sharing knowledge, thoughts, and technical tutorials.
 
 This blogging site is powered by **Jekyll** and features a completely customized, high-performance, and responsive design that looks stunning on any device.
 
@@ -47,10 +44,10 @@ Inline code blocks are wrapped in backticks like `this`. Block code snippets loo
 ```javascript
 // A simple JavaScript function
 function greetUser(name) {
-  console.log(`Welcome back, ${name}!`);
+  console.log("Welcome back, " + name + "!");
 }
 greetUser('Smadu');
 ```
 
 ## What's Next?
-In upcoming posts, I'll be sharing detailed software development tutorials, web development tips, and modern UI/UX workflows. Stay tuned and feel free to subscribe to the newsletter below!
+In upcoming posts, we'll be sharing detailed software development tutorials, web development tips, and modern UI/UX workflows. Stay tuned and feel free to subscribe to the newsletter below!

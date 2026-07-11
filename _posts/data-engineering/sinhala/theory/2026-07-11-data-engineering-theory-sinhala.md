@@ -4,9 +4,6 @@ title: "දත්ත ඉංජිනේරු විද්‍යාව යනු
 date: 2026-07-11 10:15:00 +0530
 categories: [data, database]
 tags: [data, databases, pipelines, theory, sinhala]
-field: "Data Engineering"
-language: "Sinhala"
-section: "Theory"
 description: "Data Engineering යන්නෙහි මූලික සංකල්ප, ETL ක්‍රියාවලිය සහ මෙවලම් පිළිබඳව සරල සිංහල පැහැදිලි කිරීමක්."
 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
 ---

@@ -33,43 +33,58 @@ permalink: /blogs/
     </div>
 
     <ul class="nav-tree">
-      {% comment %} Get list of unique fields represented in posts {% endcomment %}
       {% assign raw_fields = "Network Engineering,Data Engineering,AI (Artificial Intelligence),Robotics,Productivity with AI - (AI as a Assistant)" | split: "," %}
       
       {% for field in raw_fields %}
-        {% assign field_id = field | slugify %}
+        {% assign field_slug = field | slugify %}
         
         <li class="nav-tree-item">
           <!-- Category Header (Clickable to Collapse) -->
-          <div class="field-header" onclick="toggleCollapse('{{ field_id }}')">
+          <div class="field-header" onclick="toggleCollapse('{{ field_slug }}')">
             <span>{{ field }}</span>
-            <svg class="field-icon" id="icon-{{ field_id }}" style="transform: rotate(180deg);" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            <svg class="field-icon" id="icon-{{ field_slug }}" style="transform: rotate(180deg);" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
           </div>
 
           <!-- Collapsible content (list of languages and their sections) -->
-          <div id="collapse-{{ field_id }}" class="sidebar-collapse-content" style="display: block;">
+          <div id="collapse-{{ field_slug }}" class="sidebar-collapse-content" style="display: block;">
             
             <!-- English Subcategory -->
-            {% assign en_posts = site.posts | where: "field", field | where: "language", "English" %}
             <div class="lang-list-container">
               <div class="lang-title" style="padding-left: 0.75rem; margin-top: 0.5rem;">
                 <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: var(--text-secondary);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 700;">English Blogs</span>
               </div>
               <ul class="section-list">
-                {% comment %} Define standard sub-sections for English based on field {% endcomment %}
-                {% if field == "Network Engineering" or field == "Data Engineering" or field == "AI (Artificial Intelligence)" or field == "Robotics" %}
-                  {% assign sections = "Theory,LABs,Hands dirty with DATA Engineering,Hands dirty with AI,Hands dirty with Robotics" | split: "," %}
+                {% if field == "Network Engineering" %}
+                  {% assign sections = "Theory,LABs" | split: "," %}
+                {% elsif field == "Data Engineering" %}
+                  {% assign sections = "Theory,Hands dirty with DATA Engineering" | split: "," %}
+                {% elsif field == "AI (Artificial Intelligence)" %}
+                  {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
+                {% elsif field == "Robotics" %}
+                  {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
                 {% elsif field == "Productivity with AI - (AI as a Assistant)" %}
                   {% assign sections = "Our Leanings from experience,For Kids" | split: "," %}
                 {% endif %}
                 
                 {% for sec in sections %}
-                  {% assign has_posts = site.posts | where: "field", field | where: "language", "English" | where: "section", sec %}
+                  {% assign sec_slug = sec | slugify %}
+                  
+                  {% comment %} Count posts in this category path {% endcomment %}
+                  {% assign count = 0 %}
+                  {% for post in site.posts %}
+                    {% assign c_field = post.categories[0] | slugify %}
+                    {% assign c_lang = post.categories[1] | slugify %}
+                    {% assign c_sec = post.categories[2] | slugify %}
+                    {% if c_field == field_slug and c_lang == "english" and c_sec == sec_slug %}
+                      {% assign count = count | plus: 1 %}
+                    {% endif %}
+                  {% endfor %}
+                  
                   <li class="section-item">
-                    <a href="#" class="section-link" id="link-{{ field_id }}-en-{{ sec | slugify }}" onclick="filterArchive('{{ field }}', 'English', '{{ sec }}', this); event.preventDefault();" style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="#" class="section-link" id="link-{{ field_slug }}-en-{{ sec_slug }}" onclick="filterArchive('{{ field_slug }}', 'english', '{{ sec_slug }}', this, '{{ field | escape }}', 'English', '{{ sec | escape }}'); event.preventDefault();" style="display: flex; justify-content: space-between; align-items: center;">
                       <span>{{ sec }}</span>
-                      <span style="font-size: 0.75rem; opacity: 0.6;">({{ has_posts.size }})</span>
+                      <span style="font-size: 0.75rem; opacity: 0.6;">({{ count }})</span>
                     </a>
                   </li>
                 {% endfor %}
@@ -77,26 +92,42 @@ permalink: /blogs/
             </div>
 
             <!-- Sinhala Subcategory -->
-            {% assign si_posts = site.posts | where: "field", field | where: "language", "Sinhala" %}
             <div class="lang-list-container" style="margin-top: 0.5rem;">
               <div class="lang-title" style="padding-left: 0.75rem;">
                 <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: var(--text-secondary);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 700;">Sinhala Blogs</span>
               </div>
               <ul class="section-list">
-                {% comment %} Define standard sub-sections for Sinhala based on field {% endcomment %}
-                {% if field == "Network Engineering" or field == "Data Engineering" or field == "AI (Artificial Intelligence)" or field == "Robotics" %}
-                  {% assign sections = "Theory,LABs,Hands dirty with DATA Engineering,Hands dirty with AI,Hands dirty with Robotics" | split: "," %}
+                {% if field == "Network Engineering" %}
+                  {% assign sections = "Theory,LABs" | split: "," %}
+                {% elsif field == "Data Engineering" %}
+                  {% assign sections = "Theory,Hands dirty with DATA Engineering" | split: "," %}
+                {% elsif field == "AI (Artificial Intelligence)" %}
+                  {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
+                {% elsif field == "Robotics" %}
+                  {% assign sections = "Theory,Hands dirty with AI" | split: "," %}
                 {% elsif field == "Productivity with AI - (AI as a Assistant)" %}
                   {% assign sections = "Our Leanings from experience,For Kids" | split: "," %}
                 {% endif %}
                 
                 {% for sec in sections %}
-                  {% assign has_posts = site.posts | where: "field", field | where: "language", "Sinhala" | where: "section", sec %}
+                  {% assign sec_slug = sec | slugify %}
+                  
+                  {% comment %} Count posts in this category path {% endcomment %}
+                  {% assign count = 0 %}
+                  {% for post in site.posts %}
+                    {% assign c_field = post.categories[0] | slugify %}
+                    {% assign c_lang = post.categories[1] | slugify %}
+                    {% assign c_sec = post.categories[2] | slugify %}
+                    {% if c_field == field_slug and c_lang == "sinhala" and c_sec == sec_slug %}
+                      {% assign count = count | plus: 1 %}
+                    {% endif %}
+                  {% endfor %}
+                  
                   <li class="section-item">
-                    <a href="#" class="section-link" id="link-{{ field_id }}-si-{{ sec | slugify }}" onclick="filterArchive('{{ field }}', 'Sinhala', '{{ sec }}', this); event.preventDefault();" style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="#" class="section-link" id="link-{{ field_slug }}-si-{{ sec_slug }}" onclick="filterArchive('{{ field_slug }}', 'sinhala', '{{ sec_slug }}', this, '{{ field | escape }}', 'Sinhala', '{{ sec | escape }}'); event.preventDefault();" style="display: flex; justify-content: space-between; align-items: center;">
                       <span>{{ sec }}</span>
-                      <span style="font-size: 0.75rem; opacity: 0.6;">({{ has_posts.size }})</span>
+                      <span style="font-size: 0.75rem; opacity: 0.6;">({{ count }})</span>
                     </a>
                   </li>
                 {% endfor %}
@@ -126,10 +157,14 @@ permalink: /blogs/
     <!-- Blogs Grid list -->
     <div class="posts-grid" id="archiveGrid">
       {% for post in site.posts %}
+      {% assign c_field = post.categories[0] | slugify %}
+      {% assign c_lang = post.categories[1] | slugify %}
+      {% assign c_sec = post.categories[2] | slugify %}
+      
       <article class="post-card glass-panel" 
-               data-field="{{ post.field | escape }}" 
-               data-language="{{ post.language | escape }}" 
-               data-section="{{ post.section | escape }}"
+               data-field="{{ c_field | escape }}" 
+               data-language="{{ c_lang | escape }}" 
+               data-section="{{ c_sec | escape }}"
                style="display: flex;">
         <div class="post-card-image-wrapper">
           <a href="{{ post.url | relative_url }}">
@@ -142,14 +177,14 @@ permalink: /blogs/
         </div>
         <div class="post-card-content">
           <div class="post-meta-row" style="margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
-            {% if post.field %}
-            <span class="post-category-tag" style="background: rgba(99, 102, 241, 0.1); color: var(--color-primary);">{{ post.field }}</span>
+            {% if post.categories[0] %}
+            <span class="post-category-tag" style="background: rgba(99, 102, 241, 0.1); color: var(--color-primary);">{{ post.categories[0] | replace: "-", " " | capitalize }}</span>
             {% endif %}
-            {% if post.language %}
-            <span class="post-category-tag" style="background: rgba(168, 85, 247, 0.1); color: var(--color-secondary);">{{ post.language }}</span>
+            {% if post.categories[1] %}
+            <span class="post-category-tag" style="background: rgba(168, 85, 247, 0.1); color: var(--color-secondary);">{{ post.categories[1] | capitalize }}</span>
             {% endif %}
-            {% if post.section %}
-            <span class="post-category-tag" style="background: rgba(244, 63, 94, 0.1); color: var(--color-accent);">{{ post.section }}</span>
+            {% if post.categories[2] %}
+            <span class="post-category-tag" style="background: rgba(244, 63, 94, 0.1); color: var(--color-accent);">{{ post.categories[2] | replace: "-", " " | capitalize }}</span>
             {% endif %}
           </div>
           <h3 class="post-card-title"><a href="{{ post.url | relative_url }}" style="color: inherit;">{{ post.title }}</a></h3>
@@ -204,7 +239,7 @@ permalink: /blogs/
   }
 
   // Core Filtering Script
-  function filterArchive(field, language, section, element) {
+  function filterArchive(fieldSlug, langSlug, secSlug, element, fieldPretty, langPretty, secPretty) {
     // 1. Remove active state from all links
     const allLinks = document.querySelectorAll('.section-link');
     allLinks.forEach(link => {
@@ -221,10 +256,10 @@ permalink: /blogs/
     element.style.background = 'rgba(99, 102, 241, 0.05)';
     element.style.fontWeight = '600';
 
-    // 3. Update Title & Header values
-    document.getElementById('filterHeading').innerText = field + ' > ' + language + ' > ' + section;
+    // 3. Update Title & Header values using pretty names
+    document.getElementById('filterHeading').innerText = fieldPretty + ' > ' + langPretty + ' > ' + secPretty;
 
-    // 4. Perform card filtering
+    // 4. Perform card filtering using slugs
     const cards = document.querySelectorAll('.post-card');
     let visibleCount = 0;
 
@@ -233,7 +268,7 @@ permalink: /blogs/
       const cardLang = card.getAttribute('data-language');
       const cardSec = card.getAttribute('data-section');
 
-      if (cardField === field && cardLang === language && cardSec === section) {
+      if (cardField === fieldSlug && cardLang === langSlug && cardSec === secSlug) {
         card.style.display = 'flex';
         visibleCount++;
       } else {
