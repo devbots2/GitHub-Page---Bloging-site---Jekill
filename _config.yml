@@ -1,20 +1,34 @@
 # Site Settings
-title: "The Digital Canvas"
-tagline: "Insights on Technology, Design & Engineering"
-description: "A premium, responsive Jekyll blog site with beautiful typography, glassmorphism, and a dedicated post structure."
+title: "DevBotS2"
+tagline: "Insights on Networks, Data, AI & Robotics"
+description: "Professional tech blog covering Network Engineering, Data Engineering, AI, Robotics, and AI Productivity."
 url: "https://devbots2.github.io" # the base hostname & protocol for your site, e.g. http://username.github.io
 baseurl: "/GitHub-Page---Bloging-site---Jekill" # the subpath of your site, e.g. /blog
+logo: "/assets/images/logo.svg"
 
-# Author Details
+# Author Details (SEO Plugin Compatibility)
 author:
-  name: "Smadu"
-  email: "smadu@example.com"
-  bio: "Full Stack Engineer, Designer, and Tech Writer."
-  avatar: "/assets/images/avatar.jpg"
-  social:
-    github: "github_username"
-    twitter: "twitter_username"
-    linkedin: "linkedin_username"
+  name: "DevBotS2 Team"
+  email: "contact@devbots2.com"
+
+# Team Profiles (For About Page)
+authors:
+  - name: "Engineer One"
+    role: "Lead Networks & AI Engineer"
+    email: "engineer1@devbots2.com"
+    bio: "Specializing in network design, simulation LABs, Robotics, and AI model deployments."
+    avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=engineer1"
+    social:
+      github: "devbots2"
+      linkedin: "devbots2"
+  - name: "Engineer Two"
+    role: "Lead Data & Systems Engineer"
+    email: "engineer2@devbots2.com"
+    bio: "Specializing in distributed data pipelines, AI assistants, and automated workflows."
+    avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=engineer2"
+    social:
+      github: "devbots2"
+      linkedin: "devbots2"
 
 # Build Settings
 markdown: kramdown

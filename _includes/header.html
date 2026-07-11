@@ -2,7 +2,10 @@
   <div class="container header-container">
     <!-- Brand / Logo -->
     <a href="{{ '/' | relative_url }}" class="site-logo">
-      {{ site.title }}
+      {% if site.logo %}
+      <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" style="height: 38px; width: 38px; border-radius: 0; object-fit: contain;">
+      {% endif %}
+      <span>{{ site.title }}</span>
     </a>
 
     <!-- Navigation links & Theme Switcher -->

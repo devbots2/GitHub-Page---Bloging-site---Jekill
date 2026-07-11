@@ -33,7 +33,7 @@
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --max-width: 1200px;
+  --max-width: 1600px;
   --header-height: 80px;
   
   /* Transitions */
@@ -991,4 +991,287 @@ h4 { font-size: 1.25rem; }
   width: 20px;
   height: 20px;
   fill: currentColor;
+}
+
+/* ==========================================================================
+   DevBotS2 Widescreen Left Sidebar & Navigation Styles
+   ========================================================================== */
+.widescreen-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+/* Left Sidebar Navigation Container */
+.left-sidebar-nav {
+  position: sticky;
+  top: calc(var(--header-height) + 2rem);
+  max-height: calc(100vh - var(--header-height) - 4rem);
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.left-sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.left-sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+/* Hierarchy Navigation Tree */
+.nav-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-tree-item {
+  margin-bottom: 1rem;
+  list-style-type: none;
+}
+
+/* Main Category / Field Header */
+.field-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: rgba(var(--color-primary-rgb), 0.05);
+  border-left: 3px solid var(--color-primary);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.field-header:hover {
+  background: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary);
+}
+
+.field-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  transition: transform var(--transition-fast);
+}
+
+/* Subcategories (Languages) */
+.lang-list {
+  list-style: none;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+  border-left: 1px dashed var(--border-color);
+}
+
+.lang-item {
+  margin-bottom: 0.5rem;
+  list-style-type: none;
+}
+
+.lang-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.lang-title:hover {
+  color: var(--text-primary);
+}
+
+/* Sub-sections (Theory / LABs / Hands dirty) */
+.section-list {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.section-item {
+  margin-bottom: 0.25rem;
+  list-style-type: none;
+}
+
+.section-link {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.section-link:hover, .section-link.active {
+  color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.05);
+  font-weight: 500;
+}
+
+/* Floating Filter button for Mobile Drawer */
+.mobile-filter-bar {
+  display: none;
+  margin-bottom: 1.5rem;
+}
+
+.btn-mobile-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-heading);
+}
+
+.btn-mobile-filter svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Mobile Drawer Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 199;
+  display: none;
+}
+
+/* Responsive styling for Mobile Left Sidebar */
+@media (max-width: 992px) {
+  .widescreen-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .mobile-filter-bar {
+    display: block;
+  }
+
+  .left-sidebar-nav {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 290px;
+    height: 100vh;
+    z-index: 200;
+    background: var(--bg-primary);
+    border-right: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    padding: 2rem 1.5rem;
+    transition: left var(--transition-normal);
+    overflow-y: auto;
+  }
+
+  .left-sidebar-nav.active {
+    left: 0;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  /* Add close button to mobile sidebar */
+  .mobile-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+  }
+}
+
+@media (min-width: 993px) {
+  .mobile-sidebar-header {
+    display: none;
+  }
+}
+
+/* Dual Engineer Profiles Grid Layout */
+.profile-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+}
+
+.profile-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.profile-role {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.profile-body {
+  padding: 2rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.profile-footer {
+  padding: 1.5rem 2rem;
+  background: rgba(var(--color-primary-rgb), 0.02);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
