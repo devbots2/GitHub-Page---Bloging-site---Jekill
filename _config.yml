@@ -1,0 +1,46 @@
+# Site Settings
+title: "The Digital Canvas"
+tagline: "Insights on Technology, Design & Engineering"
+description: "A premium, responsive Jekyll blog site with beautiful typography, glassmorphism, and a dedicated post structure."
+url: "" # the base hostname & protocol for your site, e.g. http://username.github.io
+baseurl: "" # the subpath of your site, e.g. /blog
+
+# Author Details
+author:
+  name: "Smadu"
+  email: "smadu@example.com"
+  bio: "Full Stack Engineer, Designer, and Tech Writer."
+  avatar: "/assets/images/avatar.jpg"
+  social:
+    github: "github_username"
+    twitter: "twitter_username"
+    linkedin: "linkedin_username"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: /blogs/:title/
+
+# Pagination
+paginate: 6
+paginate_path: "/blogs/page:num/"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude list from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .github/
+  - .git/
+  - LICENSE.txt
+  - README.md

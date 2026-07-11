@@ -1,0 +1,109 @@
+---
+layout: default
+---
+<article class="post">
+  <!-- Post Header -->
+  <header class="post-header">
+    <div class="post-meta-details">
+      {% if page.categories.size > 0 %}
+      <span class="post-category-tag">{{ page.categories[0] }}</span>
+      {% endif %}
+      <div class="post-meta-detail">
+        <svg viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-1V1m-1 11H9v2h5v-2z"/></svg>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+      </div>
+      <div class="post-meta-detail">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+        <span>
+          {% assign words = content | number_of_words %}
+          {% if words < 360 %}
+            1 min read
+          {% else %}
+            {{ words | divided_by: 180 | plus: 1 }} min read
+          {% endif %}
+        </span>
+      </div>
+    </div>
+    
+    <h1 class="post-headline">{{ page.title }}</h1>
+    
+    {% if page.description %}
+    <p class="hero-subtitle" style="margin-bottom: 0;">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <!-- Cover Image -->
+  {% if page.image %}
+  <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="post-cover-image">
+  {% endif %}
+
+  <!-- Post Body & Sidebar Container -->
+  <div class="post-container">
+    
+    <!-- Left Column: Article Content -->
+    <div class="post-article">
+      <div class="post-body">
+        {{ content }}
+      </div>
+
+      <!-- Author Card -->
+      {% if site.author %}
+      <div class="author-card glass-panel">
+        <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="author-card-avatar" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed={{ site.author.name | url_encode }}'">
+        <div>
+          <div class="author-card-name">Written by {{ site.author.name }}</div>
+          <div class="author-card-bio">{{ site.author.bio }}</div>
+          <div class="author-card-socials">
+            {% if site.author.social.github %}
+            <a href="https://github.com/{{ site.author.social.github }}" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+            </a>
+            {% endif %}
+            {% if site.author.social.twitter %}
+            <a href="https://twitter.com/{{ site.author.social.twitter }}" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.48.75 2.78 1.9 3.55-.7 0-1.36-.2-1.94-.53v.05c0 2.05 1.46 3.76 3.4 4.15-.36.1-.73.15-1.12.15-.27 0-.54-.03-.8-.08.54 1.68 2.1 2.9 3.95 2.94-1.45 1.13-3.27 1.8-5.25 1.8-.34 0-.68-.02-1.02-.06C3.44 19.29 5.7 20 8.12 20c7.92 0 12.26-6.56 12.26-12.26 0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.22z"/></svg>
+            </a>
+            {% endif %}
+            {% if site.author.social.linkedin %}
+            <a href="https://linkedin.com/in/{{ site.author.social.linkedin }}" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Right Column: Sidebar -->
+    <aside class="post-sidebar">
+      <div class="sidebar-widget glass-panel">
+        <a href="{{ '/blogs/' | relative_url }}" class="post-card-link" style="margin-bottom: 1.5rem; display: inline-flex;">
+          <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; transform: scaleX(-1); fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+          Back to Blogs
+        </a>
+        <div class="widget-title">Post Information</div>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          <strong>Published:</strong> {{ page.date | date: "%B %d, %Y" }}
+        </p>
+        {% if page.categories.size > 0 %}
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          <strong>Category:</strong> {{ page.categories | join: ", " }}
+        </p>
+        {% endif %}
+      </div>
+
+      {% if page.tags.size > 0 %}
+      <div class="sidebar-widget glass-panel">
+        <div class="widget-title">Tags</div>
+        <div class="sidebar-tags">
+          {% for tag in page.tags %}
+          <span class="tag-badge">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </aside>
+
+  </div>
+</article>
