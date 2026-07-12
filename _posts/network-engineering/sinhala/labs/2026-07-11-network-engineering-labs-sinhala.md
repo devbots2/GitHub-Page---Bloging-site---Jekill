@@ -2,7 +2,7 @@
 layout: post
 title: "ජාල ඉංජිනේරු විද්‍යාව - Cisco Packet Tracer LAB (ප්‍රායෝගික)"
 date: 2026-07-11 10:00:00 +0530
-categories: [networking, simulation]
+categories: [network-engineering, sinhala, labs]
 tags: [cisco, networks, labs, sinhala]
 description: "Packet Tracer භාවිතයෙන් සරල LAN ජාලයක් සැකසීම සහ IP ලිපින වින්‍යාසගත කිරීම් සිදුකරන ආකාරය පියවරෙන් පියවර සිංහලෙන්."
 image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80"

@@ -2,7 +2,7 @@
 layout: post
 title: "දත්ත ඉංජිනේරු විද්‍යාව යනු කුමක්ද? - What is Data Engineering?"
 date: 2026-07-11 10:15:00 +0530
-categories: [data engineering]
+categories: [data engineering, sinhala, theory]
 tags: [data engineering, theory, sinhala]
 description: "Data Engineering යන්නෙහි මූලික සංකල්ප, ETL ක්‍රියාවලිය සහ මෙවලම් පිළිබඳව සරල සිංහල පැහැදිලි කිරීමක්."
 image: "/assets/images/what-is-data-engineering.png"

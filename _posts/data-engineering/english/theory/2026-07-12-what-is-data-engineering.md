@@ -2,7 +2,7 @@
 layout: post
 title: "What is Data Engineering? (A Simple Guide)"
 date: 2026-07-11 10:30:00 +0530
-categories: [data engineering]
+categories: [data engineering, english, theory]
 tags: [data-engineering, theory]
 description: "An easy-to-understand guide explaining data engineering, ETL, and data storage using real-world analogies like coffee shops and kitchens"
 image: "/assets/images/what-is-data-engineering.png"

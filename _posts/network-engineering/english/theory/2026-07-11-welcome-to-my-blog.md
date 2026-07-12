@@ -2,7 +2,7 @@
 layout: post
 title: "Welcome to DevBotS2"
 date: 2026-07-11 09:30:00 +0530
-categories: [general, blogging]
+categories: [network-engineering, english, theory]
 tags: [jekyll, writing, introduction]
 description: "An introductory post Welcoming you to DevBotS2, our new tech sharing platform."
 image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80"

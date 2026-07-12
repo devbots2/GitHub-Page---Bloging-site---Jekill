@@ -2,7 +2,7 @@
 layout: post
 title: "Hands-on Guide: Getting Started with LLM API Integration"
 date: 2026-07-11 10:30:00 +0530
-categories: [ai, programming]
+categories: [ai-artificial-intelligence, english, hands-dirty-with-ai]
 tags: [ai, python, openai, llm, tools]
 description: "A practical guide to connecting and interacting with Large Language Model APIs using Python."
 image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80"
