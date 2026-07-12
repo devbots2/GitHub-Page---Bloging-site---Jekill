@@ -5,7 +5,7 @@ date: 2026-07-11 10:30:00 +0530
 categories: [data engineering]
 tags: [data-engineering, theory]
 description: "An easy-to-understand guide explaining data engineering, ETL, and data storage using real-world analogies like coffee shops and kitchens"
-image: "https://drive.google.com/file/d/1eFb7o4hGpbGDPQuBdQLhpkIRYTk6qa1y/view?usp=drive_link"
+image: "/assets/images/what-is-data-engineering.png"
 ---
 
 Imagine walking into your favorite coffee shop. You walk up to the counter, order an iced caramel latte, and within two minutes, the barista hands it to you—perfectly mixed, ice-cold, and exactly what you expected.
