@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "What is Data Engineering"
+title: "What is Data Engineering? (A Simple Guide)"
 date: 2026-07-11 10:30:00 +0530
 categories: [data engineering]
 tags: [data-engineering, theory]
 description: "An easy-to-understand guide explaining data engineering, ETL, and data storage using real-world analogies like coffee shops and kitchens"
-image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80"
+image: "https://drive.google.com/file/d/1eFb7o4hGpbGDPQuBdQLhpkIRYTk6qa1y/view?usp=drive_link"
 ---
 
-Imagine walking into your favorite coffee shop. You walk up to the counter, order an iced caramel latte, and within two minutes, the barista hands it to you—perfectly mixed, ice-cold, and exactly what you expected. 
+Imagine walking into your favorite coffee shop. You walk up to the counter, order an iced caramel latte, and within two minutes, the barista hands it to you—perfectly mixed, ice-cold, and exactly what you expected.
 
 It feels effortless, right? 
 
